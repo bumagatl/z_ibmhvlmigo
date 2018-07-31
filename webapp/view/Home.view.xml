@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="com.ibm.hvl.goods.issue.Z_MIGO.controller.Home" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idHomeView">
+		<pages>
+			<Page title="Goods Issue">
+				<content>
+				<VBox class="sapUiSmallMargin">
+					<f:SimpleForm id="SimpleFormDisplay354"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3"
+						labelSpanM="3"
+						emptySpanL="5"
+						emptySpanM="4"
+						columnsL="1"
+						columnsM="1">
+						<f:content>
+							<Label text="Plant" />
+							<Input placeholder="Plant" showValueHelp="true"/>
+							<Label text="Storage" />
+							<Input placeholder="Storage" showValueHelp="true"/>
+							<Label text="Account Type" />
+							<RadioButtonGroup selectedIndex="0" select="onAccountTypeSelect">
+								<buttons>
+									<RadioButton text="Cost Center" />
+									<RadioButton text="WBS"/>
+								</buttons>
+							</RadioButtonGroup>
+							<Label text="Cost Center" id="idAccountTypeLabel" />
+							<Input placeholder="Account" showValueHelp="true"/>
+							
+						</f:content>
+					</f:SimpleForm>
+					
+				</VBox>
+					
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Logout"/>
+						<Button text="Next" press="onNextPresed"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

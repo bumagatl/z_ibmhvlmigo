@@ -1,0 +1,99 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.ibm.hvl.goods.issue.Z_MIGO.controller.OrderList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="OrderList" showNavButton="true"
+				navButtonPress="onNavBackPressed">
+				<headerContent>
+					<Button id="barcodeButton" type="Emphasized" icon="sap-icon://bar-code" iconFirst="true" 
+						tooltip="Bar Code Scanner" press="_onButtonPress"/>
+				</headerContent>
+				<content>
+					<Title text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+					<SearchField placeholder="Search" showSearchButton="true" visible="true" width="auto" search="_onSearch"/>
+					<Table width="auto" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20"
+						growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{path:'/ReorderListItemSet', templateShareable:true}" id="orderList"
+						selectionChange="_onSelectionChange" updateFinished="onUpdateFinished" rememberSelections="false">
+						<infoToolbar>
+							<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+								<content>
+									<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+								</content>
+							</Toolbar>
+						</infoToolbar>
+						<headerToolbar>
+							<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+								<content>
+									<Title text="{= 'Orders - ' + ${view>/count}}" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+									<ToolbarSpacer width="auto"/>
+									<ToolbarSpacer width=""/>
+									<!--<Button id="barcodeButton" type="Emphasized" icon="sap-icon://bar-code" iconFirst="true" tooltip="Bar Code Scanner" press="_onButtonPress"/>-->
+								</content>
+								<tooltip/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="{i18n>PRODUCT_COLUMN}" width="auto" maxLines="1" textAlign="Begin" textDirection="Inherit"/>
+								</header>
+								<footer/>
+							</Column>
+							<Column width="35%" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+								<header>
+									<Text text="{i18n>QTY_COLUMN}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+								</header>
+								<footer/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Inactive">
+								<cells>
+									<VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<items>
+											<ObjectIdentifier title="{Description}" text="{Material}" tooltip="{i18n>TLP_MATERIAL}"/>
+											<ObjectAttribute title="{i18n>CC}" text="{CostCenterNumber}" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+											<ObjectAttribute title="{i18n>DEL_ADDRESS}" text="{DlvSlorLoc}" width="auto" maxLines="1" wrapping="true" textAlign="Begin"
+												textDirection="Inherit"/>
+											<ObjectAttribute title="{i18n>Label_Type}" text="{path:'Reorder', formatter: '.formatter.labelType'}" width="auto" maxLines="1"
+												wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+											<Text text="{'Existing PO, PO number ' ${PONumber} 'delivery date ' ${PODeliveryDate} ' and quantity ' ${POQty}}"
+												visible="{= ${PONumber} !==''}"/>
+										</items>
+										<layoutData/>
+									</VBox>
+									<VBox alignItems="Stretch" direction="Column" fitContainer="true" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<items>
+											<ObjectAttribute id="popoverRest" title="{i18n>RESTQTY}" text="{parts: [{path: 'MaxQty', type: 'sap.ui.model.type.Integer' }, {path: 'ReorderQty', type: 'sap.ui.model.type.Integer'}], formatter: '.formatter.restCalculator' }" active="true"
+												press="_onObjectAttributePress" visible="{path:'Reorder', formatter: '.formatter.restQtyVisibility'}"/>
+											<ObjectAttribute id="popoverReorder" title="{i18n>REORDER}" text="{path: 'ReorderQty', type: 'sap.ui.model.type.Integer'}" active="true"
+												press="_onObjectAttributePress"/>
+											<ObjectAttribute title="UoM" text="{UnitOfMeasure}" active="false"/>
+										</items>
+										<layoutData/>
+									</VBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<OverflowToolbar width="100%" height="auto" design="Auto" enabled="true" visible="true">
+						<content>
+							<ToolbarSpacer width=""/>
+							<Button text="Delete" type="Reject" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="{view>/isDeleteEnabled}" visible="true"
+								iconDensityAware="false" press="_onDelete"/>
+							<Button text="Send" type="Emphasized" icon="sap-icon://arrow-right" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false" press="_onSend"/>
+						</content>
+					</OverflowToolbar>
+				</footer>
+				<headerContent/>
+				<subHeader/>
+				<customHeader/>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
