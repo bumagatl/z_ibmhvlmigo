@@ -19,6 +19,11 @@
       "templateId": "ui5template.basicSAPUI5ApplicationComponent",
       "templateVersion": "1.4.0",
       "dateTimeStamp": "Wed, 18 Jul 2018 11:11:13 GMT"
+    },
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Tue, 07 Aug 2018 13:06:56 GMT"
     }
   ],
   "translation": {
@@ -49,6 +54,26 @@
   },
   "hybrid": {
     "hatVersion": "1.28.10",
-    "appNamespace": "com.ibm.hvl.goods.issueZ_MIGO"
+    "appNamespace": "com.ibm.hvl.goods.issueZ_MIGO",
+    "backendDestination": "FOD",
+    "oDataConfigs": [
+      {
+        "hybridOdata": {
+          "name": "ZZMM_GOODSISSUE_SRV",
+          "serviceUrl": ""
+        },
+        "originOdata": {
+          "name": "ZZMM_GOODSISSUE_SRV",
+          "serviceUrl": "/sap/opu/odata/sap/ZZMM_GOODSISSUE_SRV/"
+        }
+      }
+    ]
+  },
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZZMM_GOODSISSUE_SRV",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
   }
 }

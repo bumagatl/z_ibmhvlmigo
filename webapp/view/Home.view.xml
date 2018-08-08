@@ -18,9 +18,9 @@
 						columnsM="1">
 						<f:content>
 							<Label text="Plant" />
-							<Input placeholder="Plant" showValueHelp="true"/>
+							<Input id="idPlantInput" placeholder="Plant" showValueHelp="true" valueHelpRequest="onValueHelpPressed"/>
 							<Label text="Storage" />
-							<Input placeholder="Storage" showValueHelp="true"/>
+							<Input id="idStorLocInput" placeholder="Storage Location" showValueHelp="true" valueHelpRequest="onValueHelpPressed"/>
 							<Label text="Account Type" />
 							<RadioButtonGroup selectedIndex="0" select="onAccountTypeSelect">
 								<buttons>
@@ -29,7 +29,7 @@
 								</buttons>
 							</RadioButtonGroup>
 							<Label text="Cost Center" id="idAccountTypeLabel" />
-							<Input placeholder="Account" showValueHelp="true"/>
+							<Input id="idAccountInput" placeholder="Account" showValueHelp="true" valueHelpRequest="onValueHelpPressed"/>
 							
 						</f:content>
 					</f:SimpleForm>
@@ -41,7 +41,7 @@
 					<Toolbar>
 						<ToolbarSpacer/>
 						<Button text="Logout"/>
-						<Button text="Next" press="onNextPresed"/>
+						<Button text="Next" press="onNextPressed"/>
 					</Toolbar>
 				</footer>
 			</Page>

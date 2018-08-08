@@ -10,8 +10,18 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZZMM_GOODSISSUE_SRV": {
+				"uri": "/sap/opu/odata/sap/ZZMM_GOODSISSUE_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -58,6 +68,16 @@
 				"settings": {
 					"bundleName": "com.ibm.hvl.goods.issue.Z_MIGO.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZZMM_GOODSISSUE_SRV",
+				"preload": true
 			}
 		},
 		"resources": {
